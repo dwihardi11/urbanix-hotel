@@ -49,11 +49,11 @@
                             <div class="row g-4">
                                 <div class="col-md-6">
                                     <label class="form-label text-accent small text-uppercase" style="letter-spacing: 1px;">Full Name <span class="text-danger">*</span></label>
-                                    <input type="text" name="guest_name" class="form-control" style="background: rgba(255,255,255,0.05); border-color: rgba(230, 198, 138, 0.2); color: var(--text-highlight);" value="{{ old('guest_name') }}" placeholder="Enter your full name" required>
+                                    <input type="text" name="guest_name" class="form-control" style="background: rgba(255,255,255,0.05); border-color: rgba(230, 198, 138, 0.2); color: var(--text-highlight);" value="{{ old('guest_name', auth()->user()->name ?? '') }}" placeholder="Enter your full name" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label text-accent small text-uppercase" style="letter-spacing: 1px;">Email Address</label>
-                                    <input type="email" name="guest_email" class="form-control" style="background: rgba(255,255,255,0.05); border-color: rgba(230, 198, 138, 0.2); color: var(--text-highlight);" value="{{ old('guest_email') }}" placeholder="email@example.com">
+                                    <input type="email" name="guest_email" class="form-control" style="background: rgba(255,255,255,0.05); border-color: rgba(230, 198, 138, 0.2); color: var(--text-highlight);" value="{{ old('guest_email', auth()->user()->email ?? '') }}" placeholder="email@example.com">
                                 </div>
                                 <div class="col-md-6">
                                     <label class="form-label text-accent small text-uppercase" style="letter-spacing: 1px;">Phone Number <span class="text-danger">*</span></label>

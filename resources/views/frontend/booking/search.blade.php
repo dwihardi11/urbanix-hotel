@@ -66,7 +66,7 @@
                             <div class="d-flex justify-content-between align-items-center pt-3" style="border-top: 1px solid rgba(230, 198, 138, 0.1);">
                                 <div>
                                     <p class="text-secondary small mb-0">Total Amount</p>
-                                    <p class="text-accent h5 mb-0">Rp {{ number_format($booking->total_amount, 0, ',', '.') }}</p>
+                                    <p class="text-accent h5 mb-0">Rp {{ number_format($booking->total_price, 0, ',', '.') }}</p>
                                 </div>
                                 <a href="{{ route('booking.confirmation', $booking->booking_code) }}" class="btn btn-outline-gold btn-sm">
                                     <i class="bi bi-eye me-1"></i>View Details

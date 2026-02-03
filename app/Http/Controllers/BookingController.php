@@ -76,6 +76,15 @@ class BookingController extends Controller
                 ->withInput();
         }
 
+        // Add user_id if user is logged in
+        if (auth()->check()) {
+            $validated['user_id'] = auth()->id();
+            // Use logged-in user's email if guest_email is empty
+            if (empty($validated['guest_email'])) {
+                $validated['guest_email'] = auth()->user()->email;
+            }
+        }
+
         $booking = $this->bookingService->createBooking($validated);
 
         return redirect()->route('booking.confirmation', $booking->booking_code)
@@ -98,11 +107,9 @@ class BookingController extends Controller
             return redirect()->route('login')->with('info', 'Silakan login untuk melihat booking Anda.');
         }
 
-        // Get bookings for logged in user based on email
+        // Get bookings for logged in user based on user_id
         $bookings = Booking::with(['room.roomType', 'room.hotel', 'guest'])
-            ->whereHas('guest', function ($query) {
-                $query->where('email', auth()->user()->email);
-            })
+            ->where('user_id', auth()->id())
             ->orderBy('created_at', 'desc')
             ->get();
 

@@ -13,6 +13,7 @@
         align-items: center;
         position: relative;
         overflow: hidden;
+        padding-top: 100px;
     }
 
     .hero-enhanced::before {
